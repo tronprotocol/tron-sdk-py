@@ -8,7 +8,7 @@ import "tron/core/response.proto";
 
 service Wallet {
   // Transactions:
-  rpc BroadcastTransaction(Transaction) returns (Return) {}
+  rpc BroadcastTransaction(Transaction) returns (TransactionReturn) {}
 
   rpc CreateCommonTransaction(Transaction) returns (TransactionExtention) {}
 
