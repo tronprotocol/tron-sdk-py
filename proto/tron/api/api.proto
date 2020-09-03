@@ -64,17 +64,17 @@ service Wallet {
   rpc ProposalApprove(ProposalApproveContract) returns (TransactionExtention) {}
   rpc ProposalDelete(ProposalDeleteContract) returns (TransactionExtention) {}
 
-  rpc ExchangeCreate(ExchangeCreateContract) returns (TransactionExtention) {}
-  rpc ExchangeInject(ExchangeInjectContract) returns (TransactionExtention) {}
-  rpc ExchangeWithdraw(ExchangeWithdrawContract) returns (TransactionExtention) {}
-  rpc ExchangeTransaction(ExchangeTransactionContract) returns (TransactionExtention) {}
-
   rpc DeployContract(CreateSmartContract) returns (TransactionExtention) {}
   rpc UpdateSetting(UpdateSettingContract) returns (TransactionExtention) {}          // consume_user_resource_percent
   rpc UpdateEnergyLimit(UpdateEnergyLimitContract) returns (TransactionExtention) {}  // origin_energy_limit
   rpc ClearContractABI(ClearABIContract) returns (TransactionExtention) {}
   rpc TriggerContract(TriggerSmartContract) returns (TransactionExtention) {}
   rpc TriggerConstantContract(TriggerSmartContract) returns (TransactionExtention) {}  // not a txn type
+
+  rpc ExchangeCreate(ExchangeCreateContract) returns (TransactionExtention) {}
+  rpc ExchangeInject(ExchangeInjectContract) returns (TransactionExtention) {}
+  rpc ExchangeWithdraw(ExchangeWithdrawContract) returns (TransactionExtention) {}
+  rpc ExchangeTransaction(ExchangeTransactionContract) returns (TransactionExtention) {}
 
   rpc MarketSellAsset(MarketSellAssetContract) returns (TransactionExtention) {}
   rpc MarketCancelOrder(MarketCancelOrderContract) returns (TransactionExtention) {}
@@ -184,7 +184,7 @@ service Wallet {
 };
 
 service WalletSolidity {
-  rpc GetAccount(AccountAddressMessage) returns (Account) {};
+  rpc GetAccount(AccountAddressMessage) returns (Account) {}
   rpc GetNowBlock2(EmptyMessage) returns (BlockExtention) {}
   rpc GetBlockByLatestNum2(NumberMessage) returns (BlockListExtention) {}
 };
