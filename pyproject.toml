@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "tron"
+version = "0.1.0"
+description = "TRON-SDK-PY"
+authors = ["TRON Devs <coredevs@tron.network>"]
+license = "GPL-3.0-only"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+base58 = "^2.0.1"
+ecdsa = "^0.16.0"
+pycryptodome = "3.9.8"
+eth_abi = "^2.1.1"
+protobuf = "^3.13.0"
+grpcio = "^1.31.0"
+
+[tool.poetry.dev-dependencies]
+grpcio-tools = "1.31.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
