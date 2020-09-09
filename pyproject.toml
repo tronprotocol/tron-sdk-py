@@ -16,6 +16,7 @@ grpcio = "^1.31.0"
 
 [tool.poetry.dev-dependencies]
 grpcio-tools = "1.31.0"
+autopep8 = "^1.5.4"
 
 [build-system]
 requires = ["poetry>=0.12"]

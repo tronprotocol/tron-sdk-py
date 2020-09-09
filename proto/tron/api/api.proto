@@ -90,6 +90,7 @@ service Wallet {
   rpc GetTransactionSignWeight(Transaction) returns (TransactionSignWeight) {}
   rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) {}
 
+  // FLAW: Although the parameters' type is changed, it is still bad API design.
   rpc GetAccount(AccountAddressMessage) returns (Account) {}
   rpc GetAccountById(AccountIdMessage) returns (Account) {}
 
@@ -109,6 +110,7 @@ service Wallet {
   rpc GetBlockByNum(NumberMessage) returns (Block) {}
   rpc GetBlockByNum2(NumberMessage) returns (BlockExtention) {}
 
+  // NOTE: `GetBlockById2` is missing. The closest is `GetBlockByLatestNum2`.
   rpc GetBlockById(BytesMessage) returns (Block) {}
 
   rpc GetBlockByLimitNext(BlockLimit) returns (BlockList) {}
@@ -125,6 +127,7 @@ service Wallet {
   rpc GetTransactionInfoByBlockNum(NumberMessage) returns (TransactionInfoList) {}
 
   rpc GetContract(BytesMessage) returns (SmartContract) {}
+  // FLAW: Abusing of `info`. Should be a `GetContractCode`.
   rpc GetContractInfo(BytesMessage) returns (SmartContractDataWrapper) {}
 
   rpc ListWitnesses(EmptyMessage) returns (WitnessList) {}
@@ -135,12 +138,17 @@ service Wallet {
   rpc GetDelegatedResourceAccountIndex(BytesMessage) returns (DelegatedResourceAccountIndex) {}
 
   rpc ListProposals(EmptyMessage) returns (ProposalList) {}
-  rpc GetPaginatedProposalList(PaginatedMessage) returns (ProposalList) {}
   rpc GetProposalById(BytesMessage) returns (Proposal) {}
+  rpc GetPaginatedProposalList(PaginatedMessage) returns (ProposalList) {}
 
   rpc ListExchanges(EmptyMessage) returns (ExchangeList) {}
-  rpc GetPaginatedExchangeList(PaginatedMessage) returns (ExchangeList) {}
   rpc GetExchangeById(BytesMessage) returns (Exchange) {}
+  rpc GetPaginatedExchangeList(PaginatedMessage) returns (ExchangeList) {}
+
+  // Shielded helpers:
+  rpc ScanShieldedTRC20NotesByIvk(IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+  rpc ScanShieldedTRC20NotesByOvk(OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+  rpc IsShieldedTRC20ContractNoteSpent(NfTRC20Parameters) returns (NullifierResult) {}
 
   // Market API:
   rpc GetMarketOrderByAccount(BytesMessage) returns (MarketOrderList) {}
@@ -149,7 +157,7 @@ service Wallet {
   rpc GetMarketOrderListByPair(MarketOrderPair) returns (MarketOrderList) {}
   rpc GetMarketPairList(EmptyMessage) returns (MarketOrderPairList) {}
 
-  // Unsafe junk:
+  // FLAW: Unsafe junk.
   rpc GetTransactionSign(TransactionSign) returns (Transaction) {}
   rpc GetTransactionSign2(TransactionSign) returns (TransactionExtention) {}
   rpc EasyTransferAsset(EasyTransferAssetMessage) returns (EasyTransferResponse) {}
@@ -160,7 +168,7 @@ service Wallet {
   rpc GenerateAddress(EmptyMessage) returns (AddressPrKeyPairMessage) {}
   rpc AddSign(TransactionSign) returns (TransactionExtention) {}
 
-  // Unsafe shielded junk(should be implemented offline):
+  // FLAW: Unsafe shielded junk(should be implemented offline).
   rpc GetSpendingKey(EmptyMessage) returns (BytesMessage) {}
   rpc GetExpandedSpendingKey(BytesMessage) returns (ExpandedSpendingKeyMessage) {}
   rpc GetAkFromAsk(BytesMessage) returns (BytesMessage) {}
@@ -170,23 +178,19 @@ service Wallet {
   rpc GetZenPaymentAddress(IncomingViewingKeyDiversifierMessage) returns (PaymentAddressMessage) {}
   rpc GetNewShieldedAddress(EmptyMessage) returns (ShieldedAddressInfo) {}
   rpc GetRcm(EmptyMessage) returns (BytesMessage) {}
-
-  // Unsafe shielded helper APIs(should be implemented offline):
   rpc CreateShieldedContractParameters(PrivateShieldedTRC20Parameters) returns (ShieldedTRC20Parameters) {}
   rpc CreateShieldedContractParametersWithoutAsk(PrivateShieldedTRC20ParametersWithoutAsk)
       returns (ShieldedTRC20Parameters) {}
   rpc GetTriggerInputForShieldedTRC20Contract(ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
-
-  // Shielded helpers:
-  rpc ScanShieldedTRC20NotesByIvk(IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
-  rpc ScanShieldedTRC20NotesByOvk(OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
-  rpc IsShieldedTRC20ContractNoteSpent(NfTRC20Parameters) returns (NullifierResult) {}
 };
 
+// NOTE: All other solidified APIs are useless.
 service WalletSolidity {
   rpc GetAccount(AccountAddressMessage) returns (Account) {}
   rpc GetNowBlock2(EmptyMessage) returns (BlockExtention) {}
   rpc GetBlockByLatestNum2(NumberMessage) returns (BlockListExtention) {}
+  rpc GetTransactionById(BytesMessage) returns (Transaction) {}
+  rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}     // ???
 };
 
 message EmptyMessage {}
@@ -209,6 +213,7 @@ message AccountIdMessage {
   bytes id = 23;
 }
 
+// FLAW: Paginated APIs are usless.
 message PaginatedMessage {
   int64 offset = 1;
   int64 limit = 2;

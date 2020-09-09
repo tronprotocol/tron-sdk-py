@@ -54,7 +54,7 @@ message ExchangeList {
   repeated Exchange exchanges = 1;
 }
 message AssetIssueList {
-  repeated AssetIssueContract assetIssue = 1;
+  repeated AssetIssueContract assets = 1;
 }
 message BlockList {
   repeated Block block = 1;
@@ -63,8 +63,8 @@ message TransactionList {
   repeated Transaction transaction = 1;
 }
 message DelegatedResourceMessage {
-  bytes fromAddress = 1;
-  bytes toAddress = 2;
+  bytes from_address = 1;
+  bytes to_address = 2;
 }
 message DelegatedResourceList {
   repeated DelegatedResource delegatedResource = 1;
@@ -83,7 +83,7 @@ message EasyTransferResponse {
 
 message SmartContractDataWrapper {
   SmartContract smart_contract = 1;
-  bytes runtimecode = 2;
+  bytes runtime_code = 2;
 }
 
 message InternalTransaction {

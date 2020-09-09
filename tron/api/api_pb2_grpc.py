@@ -448,30 +448,45 @@ class WalletStub(object):
                 request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
                 response_deserializer=tron_dot_core_dot_response__pb2.ProposalList.FromString,
                 )
-        self.GetPaginatedProposalList = channel.unary_unary(
-                '/protocol.Wallet/GetPaginatedProposalList',
-                request_serializer=tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.ProposalList.FromString,
-                )
         self.GetProposalById = channel.unary_unary(
                 '/protocol.Wallet/GetProposalById',
                 request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
                 response_deserializer=tron_dot_core_dot_response__pb2.Proposal.FromString,
+                )
+        self.GetPaginatedProposalList = channel.unary_unary(
+                '/protocol.Wallet/GetPaginatedProposalList',
+                request_serializer=tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+                response_deserializer=tron_dot_core_dot_response__pb2.ProposalList.FromString,
                 )
         self.ListExchanges = channel.unary_unary(
                 '/protocol.Wallet/ListExchanges',
                 request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
                 response_deserializer=tron_dot_core_dot_response__pb2.ExchangeList.FromString,
                 )
+        self.GetExchangeById = channel.unary_unary(
+                '/protocol.Wallet/GetExchangeById',
+                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_core_dot_response__pb2.Exchange.FromString,
+                )
         self.GetPaginatedExchangeList = channel.unary_unary(
                 '/protocol.Wallet/GetPaginatedExchangeList',
                 request_serializer=tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
                 response_deserializer=tron_dot_core_dot_response__pb2.ExchangeList.FromString,
                 )
-        self.GetExchangeById = channel.unary_unary(
-                '/protocol.Wallet/GetExchangeById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.Exchange.FromString,
+        self.ScanShieldedTRC20NotesByIvk = channel.unary_unary(
+                '/protocol.Wallet/ScanShieldedTRC20NotesByIvk',
+                request_serializer=tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+                )
+        self.ScanShieldedTRC20NotesByOvk = channel.unary_unary(
+                '/protocol.Wallet/ScanShieldedTRC20NotesByOvk',
+                request_serializer=tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+                )
+        self.IsShieldedTRC20ContractNoteSpent = channel.unary_unary(
+                '/protocol.Wallet/IsShieldedTRC20ContractNoteSpent',
+                request_serializer=tron_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_core_dot_response__pb2.NullifierResult.FromString,
                 )
         self.GetMarketOrderByAccount = channel.unary_unary(
                 '/protocol.Wallet/GetMarketOrderByAccount',
@@ -602,21 +617,6 @@ class WalletStub(object):
                 '/protocol.Wallet/GetTriggerInputForShieldedTRC20Contract',
                 request_serializer=tron_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.SerializeToString,
                 response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                )
-        self.ScanShieldedTRC20NotesByIvk = channel.unary_unary(
-                '/protocol.Wallet/ScanShieldedTRC20NotesByIvk',
-                request_serializer=tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
-                )
-        self.ScanShieldedTRC20NotesByOvk = channel.unary_unary(
-                '/protocol.Wallet/ScanShieldedTRC20NotesByOvk',
-                request_serializer=tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
-                )
-        self.IsShieldedTRC20ContractNoteSpent = channel.unary_unary(
-                '/protocol.Wallet/IsShieldedTRC20ContractNoteSpent',
-                request_serializer=tron_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.NullifierResult.FromString,
                 )
 
 
@@ -956,7 +956,8 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetAccount(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """FLAW: Although the parameters' type is changed, it is still bad API design.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -1040,7 +1041,8 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetBlockById(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """NOTE: `GetBlockById2` is missing. The closest is `GetBlockByLatestNum2`.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -1100,7 +1102,8 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetContractInfo(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """FLAW: Abusing of `info`. Should be a `GetContractCode`.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -1141,13 +1144,13 @@ class WalletServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetPaginatedProposalList(self, request, context):
+    def GetProposalById(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetProposalById(self, request, context):
+    def GetPaginatedProposalList(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1159,13 +1162,32 @@ class WalletServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetExchangeById(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetPaginatedExchangeList(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetExchangeById(self, request, context):
+    def ScanShieldedTRC20NotesByIvk(self, request, context):
+        """Shielded helpers:
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ScanShieldedTRC20NotesByOvk(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def IsShieldedTRC20ContractNoteSpent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1203,7 +1225,7 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetTransactionSign(self, request, context):
-        """Unsafe junk:
+        """FLAW: Unsafe junk.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1258,7 +1280,7 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetSpendingKey(self, request, context):
-        """Unsafe shielded junk(should be implemented offline):
+        """FLAW: Unsafe shielded junk(should be implemented offline).
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1313,8 +1335,7 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def CreateShieldedContractParameters(self, request, context):
-        """Unsafe shielded helper APIs(should be implemented offline):
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -1326,25 +1347,6 @@ class WalletServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetTriggerInputForShieldedTRC20Contract(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ScanShieldedTRC20NotesByIvk(self, request, context):
-        """Shielded helpers:
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ScanShieldedTRC20NotesByOvk(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def IsShieldedTRC20ContractNoteSpent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1783,30 +1785,45 @@ def add_WalletServicer_to_server(servicer, server):
                     request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
                     response_serializer=tron_dot_core_dot_response__pb2.ProposalList.SerializeToString,
             ),
-            'GetPaginatedProposalList': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetPaginatedProposalList,
-                    request_deserializer=tron_dot_api_dot_api__pb2.PaginatedMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.ProposalList.SerializeToString,
-            ),
             'GetProposalById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProposalById,
                     request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
                     response_serializer=tron_dot_core_dot_response__pb2.Proposal.SerializeToString,
+            ),
+            'GetPaginatedProposalList': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPaginatedProposalList,
+                    request_deserializer=tron_dot_api_dot_api__pb2.PaginatedMessage.FromString,
+                    response_serializer=tron_dot_core_dot_response__pb2.ProposalList.SerializeToString,
             ),
             'ListExchanges': grpc.unary_unary_rpc_method_handler(
                     servicer.ListExchanges,
                     request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
                     response_serializer=tron_dot_core_dot_response__pb2.ExchangeList.SerializeToString,
             ),
+            'GetExchangeById': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetExchangeById,
+                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_core_dot_response__pb2.Exchange.SerializeToString,
+            ),
             'GetPaginatedExchangeList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPaginatedExchangeList,
                     request_deserializer=tron_dot_api_dot_api__pb2.PaginatedMessage.FromString,
                     response_serializer=tron_dot_core_dot_response__pb2.ExchangeList.SerializeToString,
             ),
-            'GetExchangeById': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetExchangeById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.Exchange.SerializeToString,
+            'ScanShieldedTRC20NotesByIvk': grpc.unary_unary_rpc_method_handler(
+                    servicer.ScanShieldedTRC20NotesByIvk,
+                    request_deserializer=tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.FromString,
+                    response_serializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
+            ),
+            'ScanShieldedTRC20NotesByOvk': grpc.unary_unary_rpc_method_handler(
+                    servicer.ScanShieldedTRC20NotesByOvk,
+                    request_deserializer=tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.FromString,
+                    response_serializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
+            ),
+            'IsShieldedTRC20ContractNoteSpent': grpc.unary_unary_rpc_method_handler(
+                    servicer.IsShieldedTRC20ContractNoteSpent,
+                    request_deserializer=tron_dot_api_dot_api__pb2.NfTRC20Parameters.FromString,
+                    response_serializer=tron_dot_core_dot_response__pb2.NullifierResult.SerializeToString,
             ),
             'GetMarketOrderByAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMarketOrderByAccount,
@@ -1937,21 +1954,6 @@ def add_WalletServicer_to_server(servicer, server):
                     servicer.GetTriggerInputForShieldedTRC20Contract,
                     request_deserializer=tron_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.FromString,
                     response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            ),
-            'ScanShieldedTRC20NotesByIvk': grpc.unary_unary_rpc_method_handler(
-                    servicer.ScanShieldedTRC20NotesByIvk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
-            ),
-            'ScanShieldedTRC20NotesByOvk': grpc.unary_unary_rpc_method_handler(
-                    servicer.ScanShieldedTRC20NotesByOvk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
-            ),
-            'IsShieldedTRC20ContractNoteSpent': grpc.unary_unary_rpc_method_handler(
-                    servicer.IsShieldedTRC20ContractNoteSpent,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NfTRC20Parameters.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.NullifierResult.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -3426,23 +3428,6 @@ class Wallet(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetPaginatedProposalList(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetPaginatedProposalList',
-            tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.ProposalList.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
     def GetProposalById(request,
             target,
             options=(),
@@ -3456,6 +3441,23 @@ class Wallet(object):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetProposalById',
             tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             tron_dot_core_dot_response__pb2.Proposal.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetPaginatedProposalList(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetPaginatedProposalList',
+            tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+            tron_dot_core_dot_response__pb2.ProposalList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3477,6 +3479,23 @@ class Wallet(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def GetExchangeById(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetExchangeById',
+            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_core_dot_response__pb2.Exchange.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetPaginatedExchangeList(request,
             target,
             options=(),
@@ -3494,7 +3513,7 @@ class Wallet(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetExchangeById(request,
+    def ScanShieldedTRC20NotesByIvk(request,
             target,
             options=(),
             channel_credentials=None,
@@ -3504,9 +3523,43 @@ class Wallet(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetExchangeById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.Exchange.FromString,
+        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ScanShieldedTRC20NotesByIvk',
+            tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
+            tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ScanShieldedTRC20NotesByOvk(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ScanShieldedTRC20NotesByOvk',
+            tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
+            tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def IsShieldedTRC20ContractNoteSpent(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/IsShieldedTRC20ContractNoteSpent',
+            tron_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
+            tron_dot_core_dot_response__pb2.NullifierResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3952,60 +4005,10 @@ class Wallet(object):
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
-    @staticmethod
-    def ScanShieldedTRC20NotesByIvk(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ScanShieldedTRC20NotesByIvk',
-            tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
-            tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ScanShieldedTRC20NotesByOvk(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ScanShieldedTRC20NotesByOvk',
-            tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
-            tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def IsShieldedTRC20ContractNoteSpent(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/IsShieldedTRC20ContractNoteSpent',
-            tron_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
-            tron_dot_core_dot_response__pb2.NullifierResult.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
 
 class WalletSolidityStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """NOTE: All other solidified APIs are useless.
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -4028,10 +4031,21 @@ class WalletSolidityStub(object):
                 request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
                 response_deserializer=tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
                 )
+        self.GetTransactionById = channel.unary_unary(
+                '/protocol.WalletSolidity/GetTransactionById',
+                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                )
+        self.GetRewardInfo = channel.unary_unary(
+                '/protocol.WalletSolidity/GetRewardInfo',
+                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                )
 
 
 class WalletSolidityServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """NOTE: All other solidified APIs are useless.
+    """
 
     def GetAccount(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -4046,6 +4060,18 @@ class WalletSolidityServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetBlockByLatestNum2(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetTransactionById(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetRewardInfo(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -4069,6 +4095,16 @@ def add_WalletSolidityServicer_to_server(servicer, server):
                     request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
                     response_serializer=tron_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
             ),
+            'GetTransactionById': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTransactionById,
+                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+            ),
+            'GetRewardInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRewardInfo,
+                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'protocol.WalletSolidity', rpc_method_handlers)
@@ -4077,7 +4113,8 @@ def add_WalletSolidityServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class WalletSolidity(object):
-    """Missing associated documentation comment in .proto file."""
+    """NOTE: All other solidified APIs are useless.
+    """
 
     @staticmethod
     def GetAccount(request,
@@ -4127,5 +4164,39 @@ class WalletSolidity(object):
         return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetBlockByLatestNum2',
             tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetTransactionById(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetTransactionById',
+            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetRewardInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetRewardInfo',
+            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
