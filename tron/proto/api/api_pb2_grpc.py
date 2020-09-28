@@ -2,11 +2,11 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from tron.api import api_pb2 as tron_dot_api_dot_api__pb2
-from tron.core import chain_pb2 as tron_dot_core_dot_chain__pb2
-from tron.core import common_pb2 as tron_dot_core_dot_common__pb2
-from tron.core import contract_pb2 as tron_dot_core_dot_contract__pb2
-from tron.core import response_pb2 as tron_dot_core_dot_response__pb2
+from tron.proto.api import api_pb2 as tron_dot_proto_dot_api_dot_api__pb2
+from tron.proto.core import chain_pb2 as tron_dot_proto_dot_core_dot_chain__pb2
+from tron.proto.core import common_pb2 as tron_dot_proto_dot_core_dot_common__pb2
+from tron.proto.core import contract_pb2 as tron_dot_proto_dot_core_dot_contract__pb2
+from tron.proto.core import response_pb2 as tron_dot_proto_dot_core_dot_response__pb2
 
 
 class WalletStub(object):
@@ -20,603 +20,603 @@ class WalletStub(object):
         """
         self.BroadcastTransaction = channel.unary_unary(
                 '/protocol.Wallet/BroadcastTransaction',
-                request_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionReturn.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionReturn.FromString,
                 )
         self.CreateCommonTransaction = channel.unary_unary(
                 '/protocol.Wallet/CreateCommonTransaction',
-                request_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.CreateAccount = channel.unary_unary(
                 '/protocol.Wallet/CreateAccount',
-                request_serializer=tron_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.CreateAccount2 = channel.unary_unary(
                 '/protocol.Wallet/CreateAccount2',
-                request_serializer=tron_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UpdateAccount = channel.unary_unary(
                 '/protocol.Wallet/UpdateAccount',
-                request_serializer=tron_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.UpdateAccount2 = channel.unary_unary(
                 '/protocol.Wallet/UpdateAccount2',
-                request_serializer=tron_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.SetAccountId = channel.unary_unary(
                 '/protocol.Wallet/SetAccountId',
-                request_serializer=tron_dot_core_dot_contract__pb2.SetAccountIdContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.SetAccountIdContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.AccountPermissionUpdate = channel.unary_unary(
                 '/protocol.Wallet/AccountPermissionUpdate',
-                request_serializer=tron_dot_core_dot_contract__pb2.AccountPermissionUpdateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountPermissionUpdateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.CreateTransaction = channel.unary_unary(
                 '/protocol.Wallet/CreateTransaction',
-                request_serializer=tron_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.CreateTransaction2 = channel.unary_unary(
                 '/protocol.Wallet/CreateTransaction2',
-                request_serializer=tron_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.CreateAssetIssue = channel.unary_unary(
                 '/protocol.Wallet/CreateAssetIssue',
-                request_serializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.CreateAssetIssue2 = channel.unary_unary(
                 '/protocol.Wallet/CreateAssetIssue2',
-                request_serializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UpdateAsset = channel.unary_unary(
                 '/protocol.Wallet/UpdateAsset',
-                request_serializer=tron_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.UpdateAsset2 = channel.unary_unary(
                 '/protocol.Wallet/UpdateAsset2',
-                request_serializer=tron_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.TransferAsset = channel.unary_unary(
                 '/protocol.Wallet/TransferAsset',
-                request_serializer=tron_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.TransferAsset2 = channel.unary_unary(
                 '/protocol.Wallet/TransferAsset2',
-                request_serializer=tron_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ParticipateAssetIssue = channel.unary_unary(
                 '/protocol.Wallet/ParticipateAssetIssue',
-                request_serializer=tron_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.ParticipateAssetIssue2 = channel.unary_unary(
                 '/protocol.Wallet/ParticipateAssetIssue2',
-                request_serializer=tron_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UnfreezeAsset = channel.unary_unary(
                 '/protocol.Wallet/UnfreezeAsset',
-                request_serializer=tron_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.UnfreezeAsset2 = channel.unary_unary(
                 '/protocol.Wallet/UnfreezeAsset2',
-                request_serializer=tron_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.CreateWitness = channel.unary_unary(
                 '/protocol.Wallet/CreateWitness',
-                request_serializer=tron_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.CreateWitness2 = channel.unary_unary(
                 '/protocol.Wallet/CreateWitness2',
-                request_serializer=tron_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UpdateWitness = channel.unary_unary(
                 '/protocol.Wallet/UpdateWitness',
-                request_serializer=tron_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.UpdateWitness2 = channel.unary_unary(
                 '/protocol.Wallet/UpdateWitness2',
-                request_serializer=tron_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UpdateBrokerage = channel.unary_unary(
                 '/protocol.Wallet/UpdateBrokerage',
-                request_serializer=tron_dot_core_dot_contract__pb2.UpdateBrokerageContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateBrokerageContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.VoteWitnessAccount = channel.unary_unary(
                 '/protocol.Wallet/VoteWitnessAccount',
-                request_serializer=tron_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.VoteWitnessAccount2 = channel.unary_unary(
                 '/protocol.Wallet/VoteWitnessAccount2',
-                request_serializer=tron_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.FreezeBalance = channel.unary_unary(
                 '/protocol.Wallet/FreezeBalance',
-                request_serializer=tron_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.FreezeBalance2 = channel.unary_unary(
                 '/protocol.Wallet/FreezeBalance2',
-                request_serializer=tron_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UnfreezeBalance = channel.unary_unary(
                 '/protocol.Wallet/UnfreezeBalance',
-                request_serializer=tron_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.UnfreezeBalance2 = channel.unary_unary(
                 '/protocol.Wallet/UnfreezeBalance2',
-                request_serializer=tron_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.WithdrawBalance = channel.unary_unary(
                 '/protocol.Wallet/WithdrawBalance',
-                request_serializer=tron_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.WithdrawBalance2 = channel.unary_unary(
                 '/protocol.Wallet/WithdrawBalance2',
-                request_serializer=tron_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ProposalCreate = channel.unary_unary(
                 '/protocol.Wallet/ProposalCreate',
-                request_serializer=tron_dot_core_dot_contract__pb2.ProposalCreateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ProposalCreateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ProposalApprove = channel.unary_unary(
                 '/protocol.Wallet/ProposalApprove',
-                request_serializer=tron_dot_core_dot_contract__pb2.ProposalApproveContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ProposalApproveContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ProposalDelete = channel.unary_unary(
                 '/protocol.Wallet/ProposalDelete',
-                request_serializer=tron_dot_core_dot_contract__pb2.ProposalDeleteContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ProposalDeleteContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.DeployContract = channel.unary_unary(
                 '/protocol.Wallet/DeployContract',
-                request_serializer=tron_dot_core_dot_contract__pb2.CreateSmartContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.CreateSmartContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UpdateSetting = channel.unary_unary(
                 '/protocol.Wallet/UpdateSetting',
-                request_serializer=tron_dot_core_dot_contract__pb2.UpdateSettingContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateSettingContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.UpdateEnergyLimit = channel.unary_unary(
                 '/protocol.Wallet/UpdateEnergyLimit',
-                request_serializer=tron_dot_core_dot_contract__pb2.UpdateEnergyLimitContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateEnergyLimitContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ClearContractABI = channel.unary_unary(
                 '/protocol.Wallet/ClearContractABI',
-                request_serializer=tron_dot_core_dot_contract__pb2.ClearABIContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ClearABIContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.TriggerContract = channel.unary_unary(
                 '/protocol.Wallet/TriggerContract',
-                request_serializer=tron_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.TriggerConstantContract = channel.unary_unary(
                 '/protocol.Wallet/TriggerConstantContract',
-                request_serializer=tron_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ExchangeCreate = channel.unary_unary(
                 '/protocol.Wallet/ExchangeCreate',
-                request_serializer=tron_dot_core_dot_contract__pb2.ExchangeCreateContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeCreateContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ExchangeInject = channel.unary_unary(
                 '/protocol.Wallet/ExchangeInject',
-                request_serializer=tron_dot_core_dot_contract__pb2.ExchangeInjectContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeInjectContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ExchangeWithdraw = channel.unary_unary(
                 '/protocol.Wallet/ExchangeWithdraw',
-                request_serializer=tron_dot_core_dot_contract__pb2.ExchangeWithdrawContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeWithdrawContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.ExchangeTransaction = channel.unary_unary(
                 '/protocol.Wallet/ExchangeTransaction',
-                request_serializer=tron_dot_core_dot_contract__pb2.ExchangeTransactionContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeTransactionContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.MarketSellAsset = channel.unary_unary(
                 '/protocol.Wallet/MarketSellAsset',
-                request_serializer=tron_dot_core_dot_contract__pb2.MarketSellAssetContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.MarketSellAssetContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.MarketCancelOrder = channel.unary_unary(
                 '/protocol.Wallet/MarketCancelOrder',
-                request_serializer=tron_dot_core_dot_contract__pb2.MarketCancelOrderContract.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_contract__pb2.MarketCancelOrderContract.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.GetNodeInfo = channel.unary_unary(
                 '/protocol.Wallet/GetNodeInfo',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.NodeInfo.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.NodeInfo.FromString,
                 )
         self.ListNodes = channel.unary_unary(
                 '/protocol.Wallet/ListNodes',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.NodeList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.NodeList.FromString,
                 )
         self.GetChainParameters = channel.unary_unary(
                 '/protocol.Wallet/GetChainParameters',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.ChainParameters.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.ChainParameters.FromString,
                 )
         self.TotalTransaction = channel.unary_unary(
                 '/protocol.Wallet/TotalTransaction',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
                 )
         self.GetNextMaintenanceTime = channel.unary_unary(
                 '/protocol.Wallet/GetNextMaintenanceTime',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
                 )
         self.GetTransactionSignWeight = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionSignWeight',
-                request_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionSignWeight.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSignWeight.FromString,
                 )
         self.GetTransactionApprovedList = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionApprovedList',
-                request_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionApprovedList.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionApprovedList.FromString,
                 )
         self.GetAccount = channel.unary_unary(
                 '/protocol.Wallet/GetAccount',
-                request_serializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.Account.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.Account.FromString,
                 )
         self.GetAccountById = channel.unary_unary(
                 '/protocol.Wallet/GetAccountById',
-                request_serializer=tron_dot_api_dot_api__pb2.AccountIdMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.Account.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.AccountIdMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.Account.FromString,
                 )
         self.GetAccountNet = channel.unary_unary(
                 '/protocol.Wallet/GetAccountNet',
-                request_serializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AccountNetMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AccountNetMessage.FromString,
                 )
         self.GetAccountResource = channel.unary_unary(
                 '/protocol.Wallet/GetAccountResource',
-                request_serializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AccountResourceMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AccountResourceMessage.FromString,
                 )
         self.GetAssetIssueByAccount = channel.unary_unary(
                 '/protocol.Wallet/GetAssetIssueByAccount',
-                request_serializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
                 )
         self.GetAssetIssueByName = channel.unary_unary(
                 '/protocol.Wallet/GetAssetIssueByName',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
                 )
         self.GetAssetIssueListByName = channel.unary_unary(
                 '/protocol.Wallet/GetAssetIssueListByName',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
                 )
         self.GetAssetIssueById = channel.unary_unary(
                 '/protocol.Wallet/GetAssetIssueById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
                 )
         self.GetAssetIssueList = channel.unary_unary(
                 '/protocol.Wallet/GetAssetIssueList',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
                 )
         self.GetPaginatedAssetIssueList = channel.unary_unary(
                 '/protocol.Wallet/GetPaginatedAssetIssueList',
-                request_serializer=tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
                 )
         self.GetNowBlock = channel.unary_unary(
                 '/protocol.Wallet/GetNowBlock',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Block.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Block.FromString,
                 )
         self.GetNowBlock2 = channel.unary_unary(
                 '/protocol.Wallet/GetNowBlock2',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockExtention.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.FromString,
                 )
         self.GetBlockByNum = channel.unary_unary(
                 '/protocol.Wallet/GetBlockByNum',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Block.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Block.FromString,
                 )
         self.GetBlockByNum2 = channel.unary_unary(
                 '/protocol.Wallet/GetBlockByNum2',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockExtention.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.FromString,
                 )
         self.GetBlockById = channel.unary_unary(
                 '/protocol.Wallet/GetBlockById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Block.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Block.FromString,
                 )
         self.GetBlockByLimitNext = channel.unary_unary(
                 '/protocol.Wallet/GetBlockByLimitNext',
-                request_serializer=tron_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockList.FromString,
                 )
         self.GetBlockByLimitNext2 = channel.unary_unary(
                 '/protocol.Wallet/GetBlockByLimitNext2',
-                request_serializer=tron_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.FromString,
                 )
         self.GetBlockByLatestNum = channel.unary_unary(
                 '/protocol.Wallet/GetBlockByLatestNum',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockList.FromString,
                 )
         self.GetBlockByLatestNum2 = channel.unary_unary(
                 '/protocol.Wallet/GetBlockByLatestNum2',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.FromString,
                 )
         self.GetTransactionCountByBlockNum = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionCountByBlockNum',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
                 )
         self.GetTransactionById = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.GetTransactionInfoById = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionInfoById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionInfo.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionInfo.FromString,
                 )
         self.GetTransactionInfoByBlockNum = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionInfoByBlockNum',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionInfoList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionInfoList.FromString,
                 )
         self.GetContract = channel.unary_unary(
                 '/protocol.Wallet/GetContract',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_common__pb2.SmartContract.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_common__pb2.SmartContract.FromString,
                 )
         self.GetContractInfo = channel.unary_unary(
                 '/protocol.Wallet/GetContractInfo',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.SmartContractDataWrapper.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.SmartContractDataWrapper.FromString,
                 )
         self.ListWitnesses = channel.unary_unary(
                 '/protocol.Wallet/ListWitnesses',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.WitnessList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.WitnessList.FromString,
                 )
         self.GetBrokerageInfo = channel.unary_unary(
                 '/protocol.Wallet/GetBrokerageInfo',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
                 )
         self.GetRewardInfo = channel.unary_unary(
                 '/protocol.Wallet/GetRewardInfo',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
                 )
         self.GetDelegatedResource = channel.unary_unary(
                 '/protocol.Wallet/GetDelegatedResource',
-                request_serializer=tron_dot_core_dot_response__pb2.DelegatedResourceMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.DelegatedResourceList.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceList.FromString,
                 )
         self.GetDelegatedResourceAccountIndex = channel.unary_unary(
                 '/protocol.Wallet/GetDelegatedResourceAccountIndex',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.DelegatedResourceAccountIndex.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceAccountIndex.FromString,
                 )
         self.ListProposals = channel.unary_unary(
                 '/protocol.Wallet/ListProposals',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.ProposalList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.ProposalList.FromString,
                 )
         self.GetProposalById = channel.unary_unary(
                 '/protocol.Wallet/GetProposalById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.Proposal.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.Proposal.FromString,
                 )
         self.GetPaginatedProposalList = channel.unary_unary(
                 '/protocol.Wallet/GetPaginatedProposalList',
-                request_serializer=tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.ProposalList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.ProposalList.FromString,
                 )
         self.ListExchanges = channel.unary_unary(
                 '/protocol.Wallet/ListExchanges',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.ExchangeList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.ExchangeList.FromString,
                 )
         self.GetExchangeById = channel.unary_unary(
                 '/protocol.Wallet/GetExchangeById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.Exchange.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.Exchange.FromString,
                 )
         self.GetPaginatedExchangeList = channel.unary_unary(
                 '/protocol.Wallet/GetPaginatedExchangeList',
-                request_serializer=tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.ExchangeList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.ExchangeList.FromString,
                 )
         self.ScanShieldedTRC20NotesByIvk = channel.unary_unary(
                 '/protocol.Wallet/ScanShieldedTRC20NotesByIvk',
-                request_serializer=tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
                 )
         self.ScanShieldedTRC20NotesByOvk = channel.unary_unary(
                 '/protocol.Wallet/ScanShieldedTRC20NotesByOvk',
-                request_serializer=tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
                 )
         self.IsShieldedTRC20ContractNoteSpent = channel.unary_unary(
                 '/protocol.Wallet/IsShieldedTRC20ContractNoteSpent',
-                request_serializer=tron_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.NullifierResult.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.NullifierResult.FromString,
                 )
         self.GetMarketOrderByAccount = channel.unary_unary(
                 '/protocol.Wallet/GetMarketOrderByAccount',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.MarketOrderList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderList.FromString,
                 )
         self.GetMarketOrderById = channel.unary_unary(
                 '/protocol.Wallet/GetMarketOrderById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.MarketOrder.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrder.FromString,
                 )
         self.GetMarketPriceByPair = channel.unary_unary(
                 '/protocol.Wallet/GetMarketPriceByPair',
-                request_serializer=tron_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.MarketPriceList.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketPriceList.FromString,
                 )
         self.GetMarketOrderListByPair = channel.unary_unary(
                 '/protocol.Wallet/GetMarketOrderListByPair',
-                request_serializer=tron_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.MarketOrderList.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderList.FromString,
                 )
         self.GetMarketPairList = channel.unary_unary(
                 '/protocol.Wallet/GetMarketPairList',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.MarketOrderPairList.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPairList.FromString,
                 )
         self.GetTransactionSign = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionSign',
-                request_serializer=tron_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.GetTransactionSign2 = channel.unary_unary(
                 '/protocol.Wallet/GetTransactionSign2',
-                request_serializer=tron_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.EasyTransferAsset = channel.unary_unary(
                 '/protocol.Wallet/EasyTransferAsset',
-                request_serializer=tron_dot_api_dot_api__pb2.EasyTransferAssetMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferAssetMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
                 )
         self.EasyTransferAssetByPrivate = channel.unary_unary(
                 '/protocol.Wallet/EasyTransferAssetByPrivate',
-                request_serializer=tron_dot_api_dot_api__pb2.EasyTransferAssetByPrivateMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferAssetByPrivateMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
                 )
         self.EasyTransfer = channel.unary_unary(
                 '/protocol.Wallet/EasyTransfer',
-                request_serializer=tron_dot_api_dot_api__pb2.EasyTransferMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
                 )
         self.EasyTransferByPrivate = channel.unary_unary(
                 '/protocol.Wallet/EasyTransferByPrivate',
-                request_serializer=tron_dot_api_dot_api__pb2.EasyTransferByPrivateMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferByPrivateMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
                 )
         self.CreateAddress = channel.unary_unary(
                 '/protocol.Wallet/CreateAddress',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
                 )
         self.GenerateAddress = channel.unary_unary(
                 '/protocol.Wallet/GenerateAddress',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.AddressPrKeyPairMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.AddressPrKeyPairMessage.FromString,
                 )
         self.AddSign = channel.unary_unary(
                 '/protocol.Wallet/AddSign',
-                request_serializer=tron_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+                request_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
                 )
         self.GetSpendingKey = channel.unary_unary(
                 '/protocol.Wallet/GetSpendingKey',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
                 )
         self.GetExpandedSpendingKey = channel.unary_unary(
                 '/protocol.Wallet/GetExpandedSpendingKey',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.ExpandedSpendingKeyMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.ExpandedSpendingKeyMessage.FromString,
                 )
         self.GetAkFromAsk = channel.unary_unary(
                 '/protocol.Wallet/GetAkFromAsk',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
                 )
         self.GetNkFromNsk = channel.unary_unary(
                 '/protocol.Wallet/GetNkFromNsk',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
                 )
         self.GetIncomingViewingKey = channel.unary_unary(
                 '/protocol.Wallet/GetIncomingViewingKey',
-                request_serializer=tron_dot_api_dot_api__pb2.ViewingKeyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.IncomingViewingKeyMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.ViewingKeyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.IncomingViewingKeyMessage.FromString,
                 )
         self.GetDiversifier = channel.unary_unary(
                 '/protocol.Wallet/GetDiversifier',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.DiversifierMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.DiversifierMessage.FromString,
                 )
         self.GetZenPaymentAddress = channel.unary_unary(
                 '/protocol.Wallet/GetZenPaymentAddress',
-                request_serializer=tron_dot_api_dot_api__pb2.IncomingViewingKeyDiversifierMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.PaymentAddressMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.IncomingViewingKeyDiversifierMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.PaymentAddressMessage.FromString,
                 )
         self.GetNewShieldedAddress = channel.unary_unary(
                 '/protocol.Wallet/GetNewShieldedAddress',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.ShieldedAddressInfo.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedAddressInfo.FromString,
                 )
         self.GetRcm = channel.unary_unary(
                 '/protocol.Wallet/GetRcm',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
                 )
         self.CreateShieldedContractParameters = channel.unary_unary(
                 '/protocol.Wallet/CreateShieldedContractParameters',
-                request_serializer=tron_dot_api_dot_api__pb2.PrivateShieldedTRC20Parameters.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.PrivateShieldedTRC20Parameters.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
                 )
         self.CreateShieldedContractParametersWithoutAsk = channel.unary_unary(
                 '/protocol.Wallet/CreateShieldedContractParametersWithoutAsk',
-                request_serializer=tron_dot_api_dot_api__pb2.PrivateShieldedTRC20ParametersWithoutAsk.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.PrivateShieldedTRC20ParametersWithoutAsk.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
                 )
         self.GetTriggerInputForShieldedTRC20Contract = channel.unary_unary(
                 '/protocol.Wallet/GetTriggerInputForShieldedTRC20Contract',
-                request_serializer=tron_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
                 )
 
 
@@ -1357,603 +1357,603 @@ def add_WalletServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'BroadcastTransaction': grpc.unary_unary_rpc_method_handler(
                     servicer.BroadcastTransaction,
-                    request_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionReturn.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionReturn.SerializeToString,
             ),
             'CreateCommonTransaction': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateCommonTransaction,
-                    request_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'CreateAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAccount,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AccountCreateContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountCreateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'CreateAccount2': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAccount2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AccountCreateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountCreateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UpdateAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAccount,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AccountUpdateContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountUpdateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'UpdateAccount2': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAccount2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AccountUpdateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountUpdateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'SetAccountId': grpc.unary_unary_rpc_method_handler(
                     servicer.SetAccountId,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.SetAccountIdContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.SetAccountIdContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'AccountPermissionUpdate': grpc.unary_unary_rpc_method_handler(
                     servicer.AccountPermissionUpdate,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AccountPermissionUpdateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AccountPermissionUpdateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'CreateTransaction': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateTransaction,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.TransferContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'CreateTransaction2': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateTransaction2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.TransferContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'CreateAssetIssue': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAssetIssue,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'CreateAssetIssue2': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAssetIssue2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UpdateAsset': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAsset,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UpdateAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'UpdateAsset2': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAsset2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UpdateAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'TransferAsset': grpc.unary_unary_rpc_method_handler(
                     servicer.TransferAsset,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.TransferAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'TransferAsset2': grpc.unary_unary_rpc_method_handler(
                     servicer.TransferAsset2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.TransferAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.TransferAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ParticipateAssetIssue': grpc.unary_unary_rpc_method_handler(
                     servicer.ParticipateAssetIssue,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'ParticipateAssetIssue2': grpc.unary_unary_rpc_method_handler(
                     servicer.ParticipateAssetIssue2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UnfreezeAsset': grpc.unary_unary_rpc_method_handler(
                     servicer.UnfreezeAsset,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UnfreezeAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'UnfreezeAsset2': grpc.unary_unary_rpc_method_handler(
                     servicer.UnfreezeAsset2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UnfreezeAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'CreateWitness': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateWitness,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.WitnessCreateContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessCreateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'CreateWitness2': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateWitness2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.WitnessCreateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessCreateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UpdateWitness': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateWitness,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.WitnessUpdateContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessUpdateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'UpdateWitness2': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateWitness2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.WitnessUpdateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.WitnessUpdateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UpdateBrokerage': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateBrokerage,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UpdateBrokerageContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateBrokerageContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'VoteWitnessAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.VoteWitnessAccount,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.VoteWitnessContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.VoteWitnessContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'VoteWitnessAccount2': grpc.unary_unary_rpc_method_handler(
                     servicer.VoteWitnessAccount2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.VoteWitnessContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.VoteWitnessContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'FreezeBalance': grpc.unary_unary_rpc_method_handler(
                     servicer.FreezeBalance,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.FreezeBalanceContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.FreezeBalanceContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'FreezeBalance2': grpc.unary_unary_rpc_method_handler(
                     servicer.FreezeBalance2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.FreezeBalanceContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.FreezeBalanceContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UnfreezeBalance': grpc.unary_unary_rpc_method_handler(
                     servicer.UnfreezeBalance,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UnfreezeBalanceContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeBalanceContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'UnfreezeBalance2': grpc.unary_unary_rpc_method_handler(
                     servicer.UnfreezeBalance2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UnfreezeBalanceContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeBalanceContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'WithdrawBalance': grpc.unary_unary_rpc_method_handler(
                     servicer.WithdrawBalance,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.WithdrawBalanceContract.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.WithdrawBalanceContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'WithdrawBalance2': grpc.unary_unary_rpc_method_handler(
                     servicer.WithdrawBalance2,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.WithdrawBalanceContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.WithdrawBalanceContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ProposalCreate': grpc.unary_unary_rpc_method_handler(
                     servicer.ProposalCreate,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ProposalCreateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ProposalCreateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ProposalApprove': grpc.unary_unary_rpc_method_handler(
                     servicer.ProposalApprove,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ProposalApproveContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ProposalApproveContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ProposalDelete': grpc.unary_unary_rpc_method_handler(
                     servicer.ProposalDelete,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ProposalDeleteContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ProposalDeleteContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'DeployContract': grpc.unary_unary_rpc_method_handler(
                     servicer.DeployContract,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.CreateSmartContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.CreateSmartContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UpdateSetting': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateSetting,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UpdateSettingContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateSettingContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'UpdateEnergyLimit': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateEnergyLimit,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.UpdateEnergyLimitContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.UpdateEnergyLimitContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ClearContractABI': grpc.unary_unary_rpc_method_handler(
                     servicer.ClearContractABI,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ClearABIContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ClearABIContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'TriggerContract': grpc.unary_unary_rpc_method_handler(
                     servicer.TriggerContract,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.TriggerSmartContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.TriggerSmartContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'TriggerConstantContract': grpc.unary_unary_rpc_method_handler(
                     servicer.TriggerConstantContract,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.TriggerSmartContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.TriggerSmartContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ExchangeCreate': grpc.unary_unary_rpc_method_handler(
                     servicer.ExchangeCreate,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ExchangeCreateContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeCreateContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ExchangeInject': grpc.unary_unary_rpc_method_handler(
                     servicer.ExchangeInject,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ExchangeInjectContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeInjectContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ExchangeWithdraw': grpc.unary_unary_rpc_method_handler(
                     servicer.ExchangeWithdraw,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ExchangeWithdrawContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeWithdrawContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'ExchangeTransaction': grpc.unary_unary_rpc_method_handler(
                     servicer.ExchangeTransaction,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.ExchangeTransactionContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.ExchangeTransactionContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'MarketSellAsset': grpc.unary_unary_rpc_method_handler(
                     servicer.MarketSellAsset,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.MarketSellAssetContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.MarketSellAssetContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'MarketCancelOrder': grpc.unary_unary_rpc_method_handler(
                     servicer.MarketCancelOrder,
-                    request_deserializer=tron_dot_core_dot_contract__pb2.MarketCancelOrderContract.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_contract__pb2.MarketCancelOrderContract.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'GetNodeInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNodeInfo,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.NodeInfo.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.NodeInfo.SerializeToString,
             ),
             'ListNodes': grpc.unary_unary_rpc_method_handler(
                     servicer.ListNodes,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.NodeList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.NodeList.SerializeToString,
             ),
             'GetChainParameters': grpc.unary_unary_rpc_method_handler(
                     servicer.GetChainParameters,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.ChainParameters.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.ChainParameters.SerializeToString,
             ),
             'TotalTransaction': grpc.unary_unary_rpc_method_handler(
                     servicer.TotalTransaction,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             ),
             'GetNextMaintenanceTime': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNextMaintenanceTime,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             ),
             'GetTransactionSignWeight': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionSignWeight,
-                    request_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionSignWeight.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSignWeight.SerializeToString,
             ),
             'GetTransactionApprovedList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionApprovedList,
-                    request_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionApprovedList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionApprovedList.SerializeToString,
             ),
             'GetAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAccount,
-                    request_deserializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.Account.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.Account.SerializeToString,
             ),
             'GetAccountById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAccountById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.AccountIdMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.Account.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.AccountIdMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.Account.SerializeToString,
             ),
             'GetAccountNet': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAccountNet,
-                    request_deserializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AccountNetMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AccountNetMessage.SerializeToString,
             ),
             'GetAccountResource': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAccountResource,
-                    request_deserializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AccountResourceMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AccountResourceMessage.SerializeToString,
             ),
             'GetAssetIssueByAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAssetIssueByAccount,
-                    request_deserializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
             ),
             'GetAssetIssueByName': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAssetIssueByName,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
             ),
             'GetAssetIssueListByName': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAssetIssueListByName,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
             ),
             'GetAssetIssueById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAssetIssueById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
             ),
             'GetAssetIssueList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAssetIssueList,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
             ),
             'GetPaginatedAssetIssueList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPaginatedAssetIssueList,
-                    request_deserializer=tron_dot_api_dot_api__pb2.PaginatedMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.SerializeToString,
             ),
             'GetNowBlock': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNowBlock,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Block.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Block.SerializeToString,
             ),
             'GetNowBlock2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNowBlock2,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.SerializeToString,
             ),
             'GetBlockByNum': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByNum,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Block.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Block.SerializeToString,
             ),
             'GetBlockByNum2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByNum2,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.SerializeToString,
             ),
             'GetBlockById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Block.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Block.SerializeToString,
             ),
             'GetBlockByLimitNext': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByLimitNext,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BlockLimit.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BlockLimit.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockList.SerializeToString,
             ),
             'GetBlockByLimitNext2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByLimitNext2,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BlockLimit.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BlockLimit.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
             ),
             'GetBlockByLatestNum': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByLatestNum,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockList.SerializeToString,
             ),
             'GetBlockByLatestNum2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByLatestNum2,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
             ),
             'GetTransactionCountByBlockNum': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionCountByBlockNum,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             ),
             'GetTransactionById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'GetTransactionInfoById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionInfoById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionInfo.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionInfo.SerializeToString,
             ),
             'GetTransactionInfoByBlockNum': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionInfoByBlockNum,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionInfoList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionInfoList.SerializeToString,
             ),
             'GetContract': grpc.unary_unary_rpc_method_handler(
                     servicer.GetContract,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_common__pb2.SmartContract.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_common__pb2.SmartContract.SerializeToString,
             ),
             'GetContractInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetContractInfo,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.SmartContractDataWrapper.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.SmartContractDataWrapper.SerializeToString,
             ),
             'ListWitnesses': grpc.unary_unary_rpc_method_handler(
                     servicer.ListWitnesses,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.WitnessList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.WitnessList.SerializeToString,
             ),
             'GetBrokerageInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBrokerageInfo,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             ),
             'GetRewardInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRewardInfo,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             ),
             'GetDelegatedResource': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDelegatedResource,
-                    request_deserializer=tron_dot_core_dot_response__pb2.DelegatedResourceMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.DelegatedResourceList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceList.SerializeToString,
             ),
             'GetDelegatedResourceAccountIndex': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDelegatedResourceAccountIndex,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.DelegatedResourceAccountIndex.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceAccountIndex.SerializeToString,
             ),
             'ListProposals': grpc.unary_unary_rpc_method_handler(
                     servicer.ListProposals,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.ProposalList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.ProposalList.SerializeToString,
             ),
             'GetProposalById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProposalById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.Proposal.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.Proposal.SerializeToString,
             ),
             'GetPaginatedProposalList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPaginatedProposalList,
-                    request_deserializer=tron_dot_api_dot_api__pb2.PaginatedMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.ProposalList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.ProposalList.SerializeToString,
             ),
             'ListExchanges': grpc.unary_unary_rpc_method_handler(
                     servicer.ListExchanges,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.ExchangeList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.ExchangeList.SerializeToString,
             ),
             'GetExchangeById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetExchangeById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.Exchange.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.Exchange.SerializeToString,
             ),
             'GetPaginatedExchangeList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPaginatedExchangeList,
-                    request_deserializer=tron_dot_api_dot_api__pb2.PaginatedMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.ExchangeList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.ExchangeList.SerializeToString,
             ),
             'ScanShieldedTRC20NotesByIvk': grpc.unary_unary_rpc_method_handler(
                     servicer.ScanShieldedTRC20NotesByIvk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
             ),
             'ScanShieldedTRC20NotesByOvk': grpc.unary_unary_rpc_method_handler(
                     servicer.ScanShieldedTRC20NotesByOvk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.DecryptNotesTRC20.SerializeToString,
             ),
             'IsShieldedTRC20ContractNoteSpent': grpc.unary_unary_rpc_method_handler(
                     servicer.IsShieldedTRC20ContractNoteSpent,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NfTRC20Parameters.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.NullifierResult.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NfTRC20Parameters.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.NullifierResult.SerializeToString,
             ),
             'GetMarketOrderByAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMarketOrderByAccount,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.MarketOrderList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderList.SerializeToString,
             ),
             'GetMarketOrderById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMarketOrderById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.MarketOrder.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrder.SerializeToString,
             ),
             'GetMarketPriceByPair': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMarketPriceByPair,
-                    request_deserializer=tron_dot_core_dot_response__pb2.MarketOrderPair.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.MarketPriceList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPair.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketPriceList.SerializeToString,
             ),
             'GetMarketOrderListByPair': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMarketOrderListByPair,
-                    request_deserializer=tron_dot_core_dot_response__pb2.MarketOrderPair.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.MarketOrderList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPair.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderList.SerializeToString,
             ),
             'GetMarketPairList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMarketPairList,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.MarketOrderPairList.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPairList.SerializeToString,
             ),
             'GetTransactionSign': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionSign,
-                    request_deserializer=tron_dot_core_dot_response__pb2.TransactionSign.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'GetTransactionSign2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionSign2,
-                    request_deserializer=tron_dot_core_dot_response__pb2.TransactionSign.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'EasyTransferAsset': grpc.unary_unary_rpc_method_handler(
                     servicer.EasyTransferAsset,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EasyTransferAssetMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferAssetMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
             ),
             'EasyTransferAssetByPrivate': grpc.unary_unary_rpc_method_handler(
                     servicer.EasyTransferAssetByPrivate,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EasyTransferAssetByPrivateMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferAssetByPrivateMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
             ),
             'EasyTransfer': grpc.unary_unary_rpc_method_handler(
                     servicer.EasyTransfer,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EasyTransferMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
             ),
             'EasyTransferByPrivate': grpc.unary_unary_rpc_method_handler(
                     servicer.EasyTransferByPrivate,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EasyTransferByPrivateMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EasyTransferByPrivateMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.SerializeToString,
             ),
             'CreateAddress': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAddress,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             ),
             'GenerateAddress': grpc.unary_unary_rpc_method_handler(
                     servicer.GenerateAddress,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.AddressPrKeyPairMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.AddressPrKeyPairMessage.SerializeToString,
             ),
             'AddSign': grpc.unary_unary_rpc_method_handler(
                     servicer.AddSign,
-                    request_deserializer=tron_dot_core_dot_response__pb2.TransactionSign.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.SerializeToString,
             ),
             'GetSpendingKey': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSpendingKey,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             ),
             'GetExpandedSpendingKey': grpc.unary_unary_rpc_method_handler(
                     servicer.GetExpandedSpendingKey,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.ExpandedSpendingKeyMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.ExpandedSpendingKeyMessage.SerializeToString,
             ),
             'GetAkFromAsk': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAkFromAsk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             ),
             'GetNkFromNsk': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNkFromNsk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             ),
             'GetIncomingViewingKey': grpc.unary_unary_rpc_method_handler(
                     servicer.GetIncomingViewingKey,
-                    request_deserializer=tron_dot_api_dot_api__pb2.ViewingKeyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.IncomingViewingKeyMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.ViewingKeyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.IncomingViewingKeyMessage.SerializeToString,
             ),
             'GetDiversifier': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDiversifier,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.DiversifierMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.DiversifierMessage.SerializeToString,
             ),
             'GetZenPaymentAddress': grpc.unary_unary_rpc_method_handler(
                     servicer.GetZenPaymentAddress,
-                    request_deserializer=tron_dot_api_dot_api__pb2.IncomingViewingKeyDiversifierMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.PaymentAddressMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.IncomingViewingKeyDiversifierMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.PaymentAddressMessage.SerializeToString,
             ),
             'GetNewShieldedAddress': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNewShieldedAddress,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.ShieldedAddressInfo.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedAddressInfo.SerializeToString,
             ),
             'GetRcm': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRcm,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             ),
             'CreateShieldedContractParameters': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateShieldedContractParameters,
-                    request_deserializer=tron_dot_api_dot_api__pb2.PrivateShieldedTRC20Parameters.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.ShieldedTRC20Parameters.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.PrivateShieldedTRC20Parameters.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20Parameters.SerializeToString,
             ),
             'CreateShieldedContractParametersWithoutAsk': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateShieldedContractParametersWithoutAsk,
-                    request_deserializer=tron_dot_api_dot_api__pb2.PrivateShieldedTRC20ParametersWithoutAsk.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.ShieldedTRC20Parameters.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.PrivateShieldedTRC20ParametersWithoutAsk.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20Parameters.SerializeToString,
             ),
             'GetTriggerInputForShieldedTRC20Contract': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTriggerInputForShieldedTRC20Contract,
-                    request_deserializer=tron_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1977,8 +1977,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/BroadcastTransaction',
-            tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionReturn.FromString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionReturn.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1994,8 +1994,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateCommonTransaction',
-            tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2011,8 +2011,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateAccount',
-            tron_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2028,8 +2028,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateAccount2',
-            tron_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AccountCreateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2045,8 +2045,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateAccount',
-            tron_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2062,8 +2062,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateAccount2',
-            tron_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AccountUpdateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2079,8 +2079,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/SetAccountId',
-            tron_dot_core_dot_contract__pb2.SetAccountIdContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.SetAccountIdContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2096,8 +2096,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/AccountPermissionUpdate',
-            tron_dot_core_dot_contract__pb2.AccountPermissionUpdateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AccountPermissionUpdateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2113,8 +2113,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateTransaction',
-            tron_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2130,8 +2130,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateTransaction2',
-            tron_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.TransferContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2147,8 +2147,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateAssetIssue',
-            tron_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2164,8 +2164,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateAssetIssue2',
-            tron_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2181,8 +2181,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateAsset',
-            tron_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2198,8 +2198,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateAsset2',
-            tron_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UpdateAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2215,8 +2215,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/TransferAsset',
-            tron_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2232,8 +2232,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/TransferAsset2',
-            tron_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.TransferAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2249,8 +2249,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ParticipateAssetIssue',
-            tron_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2266,8 +2266,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ParticipateAssetIssue2',
-            tron_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ParticipateAssetIssueContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2283,8 +2283,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UnfreezeAsset',
-            tron_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2300,8 +2300,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UnfreezeAsset2',
-            tron_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2317,8 +2317,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateWitness',
-            tron_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2334,8 +2334,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateWitness2',
-            tron_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.WitnessCreateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2351,8 +2351,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateWitness',
-            tron_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2368,8 +2368,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateWitness2',
-            tron_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.WitnessUpdateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2385,8 +2385,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateBrokerage',
-            tron_dot_core_dot_contract__pb2.UpdateBrokerageContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UpdateBrokerageContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2402,8 +2402,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/VoteWitnessAccount',
-            tron_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2419,8 +2419,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/VoteWitnessAccount2',
-            tron_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.VoteWitnessContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2436,8 +2436,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/FreezeBalance',
-            tron_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2453,8 +2453,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/FreezeBalance2',
-            tron_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.FreezeBalanceContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2470,8 +2470,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UnfreezeBalance',
-            tron_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2487,8 +2487,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UnfreezeBalance2',
-            tron_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UnfreezeBalanceContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2504,8 +2504,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/WithdrawBalance',
-            tron_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2521,8 +2521,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/WithdrawBalance2',
-            tron_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.WithdrawBalanceContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2538,8 +2538,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ProposalCreate',
-            tron_dot_core_dot_contract__pb2.ProposalCreateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ProposalCreateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2555,8 +2555,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ProposalApprove',
-            tron_dot_core_dot_contract__pb2.ProposalApproveContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ProposalApproveContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2572,8 +2572,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ProposalDelete',
-            tron_dot_core_dot_contract__pb2.ProposalDeleteContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ProposalDeleteContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2589,8 +2589,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/DeployContract',
-            tron_dot_core_dot_contract__pb2.CreateSmartContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.CreateSmartContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2606,8 +2606,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateSetting',
-            tron_dot_core_dot_contract__pb2.UpdateSettingContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UpdateSettingContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2623,8 +2623,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/UpdateEnergyLimit',
-            tron_dot_core_dot_contract__pb2.UpdateEnergyLimitContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.UpdateEnergyLimitContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2640,8 +2640,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ClearContractABI',
-            tron_dot_core_dot_contract__pb2.ClearABIContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ClearABIContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2657,8 +2657,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/TriggerContract',
-            tron_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2674,8 +2674,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/TriggerConstantContract',
-            tron_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.TriggerSmartContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2691,8 +2691,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ExchangeCreate',
-            tron_dot_core_dot_contract__pb2.ExchangeCreateContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ExchangeCreateContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2708,8 +2708,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ExchangeInject',
-            tron_dot_core_dot_contract__pb2.ExchangeInjectContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ExchangeInjectContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2725,8 +2725,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ExchangeWithdraw',
-            tron_dot_core_dot_contract__pb2.ExchangeWithdrawContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ExchangeWithdrawContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2742,8 +2742,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ExchangeTransaction',
-            tron_dot_core_dot_contract__pb2.ExchangeTransactionContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.ExchangeTransactionContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2759,8 +2759,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/MarketSellAsset',
-            tron_dot_core_dot_contract__pb2.MarketSellAssetContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.MarketSellAssetContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2776,8 +2776,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/MarketCancelOrder',
-            tron_dot_core_dot_contract__pb2.MarketCancelOrderContract.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_contract__pb2.MarketCancelOrderContract.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2793,8 +2793,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetNodeInfo',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.NodeInfo.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.NodeInfo.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2810,8 +2810,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ListNodes',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.NodeList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.NodeList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2827,8 +2827,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetChainParameters',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.ChainParameters.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.ChainParameters.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2844,8 +2844,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/TotalTransaction',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2861,8 +2861,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetNextMaintenanceTime',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2878,8 +2878,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionSignWeight',
-            tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionSignWeight.FromString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionSignWeight.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2895,8 +2895,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionApprovedList',
-            tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionApprovedList.FromString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionApprovedList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2912,8 +2912,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAccount',
-            tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.Account.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.Account.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2929,8 +2929,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAccountById',
-            tron_dot_api_dot_api__pb2.AccountIdMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.Account.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.AccountIdMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.Account.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2946,8 +2946,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAccountNet',
-            tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AccountNetMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AccountNetMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2963,8 +2963,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAccountResource',
-            tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AccountResourceMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AccountResourceMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2980,8 +2980,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAssetIssueByAccount',
-            tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -2997,8 +2997,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAssetIssueByName',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3014,8 +3014,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAssetIssueListByName',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3031,8 +3031,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAssetIssueById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_contract__pb2.AssetIssueContract.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3048,8 +3048,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAssetIssueList',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3065,8 +3065,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetPaginatedAssetIssueList',
-            tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AssetIssueList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AssetIssueList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3082,8 +3082,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetNowBlock',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Block.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Block.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3099,8 +3099,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetNowBlock2',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockExtention.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3116,8 +3116,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockByNum',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Block.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Block.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3133,8 +3133,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockByNum2',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockExtention.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3150,8 +3150,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Block.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Block.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3167,8 +3167,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockByLimitNext',
-            tron_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3184,8 +3184,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockByLimitNext2',
-            tron_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BlockLimit.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3201,8 +3201,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockByLatestNum',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3218,8 +3218,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBlockByLatestNum2',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3235,8 +3235,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionCountByBlockNum',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3252,8 +3252,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3269,8 +3269,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionInfoById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionInfo.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionInfo.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3286,8 +3286,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionInfoByBlockNum',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionInfoList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionInfoList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3303,8 +3303,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetContract',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_common__pb2.SmartContract.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_common__pb2.SmartContract.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3320,8 +3320,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetContractInfo',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.SmartContractDataWrapper.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.SmartContractDataWrapper.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3337,8 +3337,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ListWitnesses',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.WitnessList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.WitnessList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3354,8 +3354,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetBrokerageInfo',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3371,8 +3371,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetRewardInfo',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3388,8 +3388,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetDelegatedResource',
-            tron_dot_core_dot_response__pb2.DelegatedResourceMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.DelegatedResourceList.FromString,
+            tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3405,8 +3405,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetDelegatedResourceAccountIndex',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.DelegatedResourceAccountIndex.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.DelegatedResourceAccountIndex.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3422,8 +3422,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ListProposals',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.ProposalList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.ProposalList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3439,8 +3439,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetProposalById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.Proposal.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.Proposal.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3456,8 +3456,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetPaginatedProposalList',
-            tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.ProposalList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.ProposalList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3473,8 +3473,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ListExchanges',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.ExchangeList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.ExchangeList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3490,8 +3490,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetExchangeById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.Exchange.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.Exchange.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3507,8 +3507,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetPaginatedExchangeList',
-            tron_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.ExchangeList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.PaginatedMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.ExchangeList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3524,8 +3524,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ScanShieldedTRC20NotesByIvk',
-            tron_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
-            tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.IvkDecryptTRC20Parameters.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3541,8 +3541,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/ScanShieldedTRC20NotesByOvk',
-            tron_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
-            tron_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.OvkDecryptTRC20Parameters.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.DecryptNotesTRC20.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3558,8 +3558,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/IsShieldedTRC20ContractNoteSpent',
-            tron_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
-            tron_dot_core_dot_response__pb2.NullifierResult.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NfTRC20Parameters.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.NullifierResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3575,8 +3575,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetMarketOrderByAccount',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.MarketOrderList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketOrderList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3592,8 +3592,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetMarketOrderById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.MarketOrder.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketOrder.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3609,8 +3609,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetMarketPriceByPair',
-            tron_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
-            tron_dot_core_dot_response__pb2.MarketPriceList.FromString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketPriceList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3626,8 +3626,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetMarketOrderListByPair',
-            tron_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
-            tron_dot_core_dot_response__pb2.MarketOrderList.FromString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPair.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketOrderList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3643,8 +3643,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetMarketPairList',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.MarketOrderPairList.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.MarketOrderPairList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3660,8 +3660,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionSign',
-            tron_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3677,8 +3677,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTransactionSign2',
-            tron_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3694,8 +3694,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/EasyTransferAsset',
-            tron_dot_api_dot_api__pb2.EasyTransferAssetMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EasyTransferAssetMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3711,8 +3711,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/EasyTransferAssetByPrivate',
-            tron_dot_api_dot_api__pb2.EasyTransferAssetByPrivateMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EasyTransferAssetByPrivateMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3728,8 +3728,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/EasyTransfer',
-            tron_dot_api_dot_api__pb2.EasyTransferMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EasyTransferMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3745,8 +3745,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/EasyTransferByPrivate',
-            tron_dot_api_dot_api__pb2.EasyTransferByPrivateMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EasyTransferByPrivateMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.EasyTransferResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3762,8 +3762,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateAddress',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3779,8 +3779,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GenerateAddress',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.AddressPrKeyPairMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.AddressPrKeyPairMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3796,8 +3796,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/AddSign',
-            tron_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
-            tron_dot_core_dot_response__pb2.TransactionExtention.FromString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionSign.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.TransactionExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3813,8 +3813,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetSpendingKey',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3830,8 +3830,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetExpandedSpendingKey',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.ExpandedSpendingKeyMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.ExpandedSpendingKeyMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3847,8 +3847,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetAkFromAsk',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3864,8 +3864,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetNkFromNsk',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3881,8 +3881,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetIncomingViewingKey',
-            tron_dot_api_dot_api__pb2.ViewingKeyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.IncomingViewingKeyMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.ViewingKeyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.IncomingViewingKeyMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3898,8 +3898,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetDiversifier',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.DiversifierMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.DiversifierMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3915,8 +3915,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetZenPaymentAddress',
-            tron_dot_api_dot_api__pb2.IncomingViewingKeyDiversifierMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.PaymentAddressMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.IncomingViewingKeyDiversifierMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.PaymentAddressMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3932,8 +3932,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetNewShieldedAddress',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.ShieldedAddressInfo.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.ShieldedAddressInfo.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3949,8 +3949,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetRcm',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3966,8 +3966,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateShieldedContractParameters',
-            tron_dot_api_dot_api__pb2.PrivateShieldedTRC20Parameters.SerializeToString,
-            tron_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.PrivateShieldedTRC20Parameters.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -3983,8 +3983,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/CreateShieldedContractParametersWithoutAsk',
-            tron_dot_api_dot_api__pb2.PrivateShieldedTRC20ParametersWithoutAsk.SerializeToString,
-            tron_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.PrivateShieldedTRC20ParametersWithoutAsk.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20Parameters.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -4000,8 +4000,8 @@ class Wallet(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.Wallet/GetTriggerInputForShieldedTRC20Contract',
-            tron_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.SerializeToString,
-            tron_dot_api_dot_api__pb2.BytesMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.ShieldedTRC20TriggerContractParameters.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -4018,28 +4018,28 @@ class WalletSolidityStub(object):
         """
         self.GetAccount = channel.unary_unary(
                 '/protocol.WalletSolidity/GetAccount',
-                request_serializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.Account.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.Account.FromString,
                 )
         self.GetNowBlock2 = channel.unary_unary(
                 '/protocol.WalletSolidity/GetNowBlock2',
-                request_serializer=tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockExtention.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.FromString,
                 )
         self.GetBlockByLatestNum2 = channel.unary_unary(
                 '/protocol.WalletSolidity/GetBlockByLatestNum2',
-                request_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.FromString,
                 )
         self.GetTransactionById = channel.unary_unary(
                 '/protocol.WalletSolidity/GetTransactionById',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_core_dot_chain__pb2.Transaction.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
                 )
         self.GetRewardInfo = channel.unary_unary(
                 '/protocol.WalletSolidity/GetRewardInfo',
-                request_serializer=tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-                response_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+                request_serializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+                response_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
                 )
 
 
@@ -4082,28 +4082,28 @@ def add_WalletSolidityServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetAccount': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAccount,
-                    request_deserializer=tron_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.Account.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.Account.SerializeToString,
             ),
             'GetNowBlock2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNowBlock2,
-                    request_deserializer=tron_dot_api_dot_api__pb2.EmptyMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.SerializeToString,
             ),
             'GetBlockByLatestNum2': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBlockByLatestNum2,
-                    request_deserializer=tron_dot_api_dot_api__pb2.NumberMessage.FromString,
-                    response_serializer=tron_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.SerializeToString,
             ),
             'GetTransactionById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionById,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_core_dot_chain__pb2.Transaction.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_core_dot_chain__pb2.Transaction.SerializeToString,
             ),
             'GetRewardInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRewardInfo,
-                    request_deserializer=tron_dot_api_dot_api__pb2.BytesMessage.FromString,
-                    response_serializer=tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+                    request_deserializer=tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.FromString,
+                    response_serializer=tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -4128,8 +4128,8 @@ class WalletSolidity(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetAccount',
-            tron_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.Account.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.AccountAddressMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.Account.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -4145,8 +4145,8 @@ class WalletSolidity(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetNowBlock2',
-            tron_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockExtention.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.EmptyMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -4162,8 +4162,8 @@ class WalletSolidity(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetBlockByLatestNum2',
-            tron_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
-            tron_dot_core_dot_response__pb2.BlockListExtention.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_response__pb2.BlockListExtention.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -4179,8 +4179,8 @@ class WalletSolidity(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetTransactionById',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_core_dot_chain__pb2.Transaction.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_core_dot_chain__pb2.Transaction.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -4196,7 +4196,7 @@ class WalletSolidity(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protocol.WalletSolidity/GetRewardInfo',
-            tron_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
-            tron_dot_api_dot_api__pb2.NumberMessage.FromString,
+            tron_dot_proto_dot_api_dot_api__pb2.BytesMessage.SerializeToString,
+            tron_dot_proto_dot_api_dot_api__pb2.NumberMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

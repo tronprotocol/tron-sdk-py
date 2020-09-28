@@ -1,9 +1,9 @@
 syntax = "proto3";
 package protocol;
 
-import "tron/core/common.proto";
-import "tron/core/chain.proto";
-import "tron/core/contract.proto";
+import "tron/proto/core/common.proto";
+import "tron/proto/core/chain.proto";
+import "tron/proto/core/contract.proto";
 
 message BlockExtention {
   repeated TransactionExtention transactions = 1;

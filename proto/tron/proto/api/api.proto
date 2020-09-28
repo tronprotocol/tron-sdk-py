@@ -1,10 +1,10 @@
 syntax = "proto3";
 package protocol;
 
-import "tron/core/common.proto";
-import "tron/core/chain.proto";
-import "tron/core/contract.proto";
-import "tron/core/response.proto";
+import "tron/proto/core/common.proto";
+import "tron/proto/core/chain.proto";
+import "tron/proto/core/contract.proto";
+import "tron/proto/core/response.proto";
 
 service Wallet {
   // Transactions:
@@ -131,8 +131,8 @@ service Wallet {
   rpc GetContractInfo(BytesMessage) returns (SmartContractDataWrapper) {}
 
   rpc ListWitnesses(EmptyMessage) returns (WitnessList) {}
-  rpc GetBrokerageInfo(BytesMessage) returns (NumberMessage) {}  // ???
-  rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}     // ???
+  rpc GetBrokerageInfo(BytesMessage) returns (NumberMessage) {}
+  rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}
 
   rpc GetDelegatedResource(DelegatedResourceMessage) returns (DelegatedResourceList) {}
   rpc GetDelegatedResourceAccountIndex(BytesMessage) returns (DelegatedResourceAccountIndex) {}
@@ -190,7 +190,7 @@ service WalletSolidity {
   rpc GetNowBlock2(EmptyMessage) returns (BlockExtention) {}
   rpc GetBlockByLatestNum2(NumberMessage) returns (BlockListExtention) {}
   rpc GetTransactionById(BytesMessage) returns (Transaction) {}
-  rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}     // ???
+  rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}
 };
 
 message EmptyMessage {}
