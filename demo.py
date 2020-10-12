@@ -1,29 +1,30 @@
-
 import grpc
 
 from tron.proto.api.api_pb2_grpc import WalletStub, WalletSolidityStub
 from tron.proto.api.api_pb2 import EmptyMessage, AccountAddressMessage, BytesMessage
-from tron.types import ADDR
+from tron.proto.core.contract_pb2 import TransferContract
+from tron.client import TronClient
+from tron.types import HEX, ADDR
 
-channel = grpc.insecure_channel('grpc.trongrid.io:50051')
-stub = WalletStub(channel)
+client = TronClient(
+    endpoint="47.252.3.238:50051",
+    solidity_endpoint="47.252.3.238:50061",
+    private_key=HEX('3333333333333333333333333333333333333333333333333333333333333333'),
+)
 
-solidity_stub = WalletStub(channel)
+
+print(client.solidity_stub.GetNowBlock2(EmptyMessage()))
 
 
-resp = solidity_stub.GetNowBlock2(EmptyMessage())
-print(resp)
+req = TransferContract()
+req.owner_address = ADDR("TJRabPrwbZy45sbavfcjinPJC18kjpRTv8")
+req.to_address = ADDR("TRsbuxREXKJKonexpejWhacE4sYHt1BSHV")
+req.amount = 1_100_000
+txn = client.wallet_stub.CreateTransaction2(req)
 
-print('=' * 80)
+print("TXID:", HEX(txn.txid))
 
-"""
-req = AccountAddressMessage()
-req.address = bytes.fromhex("41adfd40f3d6575c4747f25c1bb03cf0bd415c142f")
-resp = stub.GetAccount(req)
-print(resp)
-"""
-
-req = AccountAddressMessage()
-req.address = ADDR("TRqBHd4srhfHMnfCefdF6fnkR8f71BUUY1")
-resp = stub.GetAccount(req)
+signed_txn = client.sign(txn)
+print(signed_txn)
+resp = client.wallet_stub.BroadcastTransaction(signed_txn)
 print(resp)

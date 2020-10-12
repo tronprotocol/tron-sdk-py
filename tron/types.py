@@ -12,7 +12,7 @@ class ADDR(bytes):
                 return bytes.__new__(cls, base58.b58decode_check(value))
             elif value.startswith('41') and len(value) == 21 * 2:
                 return bytes.__new__(cls, bytes.fromhex(value))
-            elif value.startswith('0x') and len(value) == 21*2:
+            elif value.startswith('0x') and len(value) == 21 * 2:
                 return bytes.__new__(cls, b'\x41' + bytes.fromhex(value[2:]))
 
         raise ValueError("invalid address")
