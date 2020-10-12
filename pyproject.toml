@@ -6,7 +6,7 @@ authors = ["TRON Devs <coredevs@tron.network>"]
 license = "GPL-3.0-only"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 base58 = "^2.0.1"
 ecdsa = "^0.16.0"
 pycryptodome = "3.9.8"
