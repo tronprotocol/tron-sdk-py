@@ -1,8 +1,4 @@
-import ecdsa  # type: ignore
-from Crypto.Hash import keccak
-import hashlib
 import base58
-import random
 
 
 class ADDR(bytes):

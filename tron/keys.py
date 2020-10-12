@@ -1,8 +1,5 @@
 import ecdsa  # type: ignore
-from Crypto.Hash import keccak
 import hashlib
-import base58
-import random
 
 from tron.types import HEX, ADDR
 from tron.crypto import keccak256

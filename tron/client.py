@@ -1,4 +1,3 @@
-
 from typing import Union
 import grpc
 
@@ -41,7 +40,8 @@ if __name__ == "__main__":
     from tron.proto.core.contract_pb2 import TransferContract
 
     client = TronClient(
-        endpoint="47.252.3.238:50051", private_key=HEX('3333333333333333333333333333333333333333333333333333333333333333')
+        endpoint="47.252.3.238:50051",
+        private_key=HEX('3333333333333333333333333333333333333333333333333333333333333333'),
     )
     req = TransferContract()
     req.owner_address = ADDR("TJRabPrwbZy45sbavfcjinPJC18kjpRTv8")
