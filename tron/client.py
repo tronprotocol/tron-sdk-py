@@ -25,6 +25,20 @@ class TronClient(object):
         if self.private_key:
             self.address = private_key_to_address(self.private_key)
 
+    @classmethod
+    def mainnet(cls, private_key=None):
+        return cls(private_key)
+
+    @classmethod
+    def shasta(cls, private_key=None):
+        return cls(
+            private_key, endpoint="grpc.shasta.trongrid.io:50051", solidity_endpoint="grpc.shasta.trongrid.io:50061"
+        )
+
+    @classmethod
+    def nile(cls, private_key=None):
+        return cls(private_key, endpoint="47.252.3.238:50051", solidity_endpoint="47.252.3.238:50061")
+
     def sign(self, txn: Union[Transaction, TransactionExtention]) -> Transaction:
         if not self.private_key:
             raise ValueError("private key is not set")
@@ -41,10 +55,7 @@ class TronClient(object):
 if __name__ == "__main__":
     from tron.proto.core.contract_pb2 import TransferContract
 
-    client = TronClient(
-        endpoint="47.252.3.238:50051",
-        private_key=HEX('3333333333333333333333333333333333333333333333333333333333333333'),
-    )
+    client = TronClient.nile(private_key=HEX('3333333333333333333333333333333333333333333333333333333333333333'))
     req = TransferContract()
     req.owner_address = ADDR("TJRabPrwbZy45sbavfcjinPJC18kjpRTv8")
     req.to_address = ADDR("TRsbuxREXKJKonexpejWhacE4sYHt1BSHV")
