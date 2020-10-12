@@ -12,9 +12,11 @@ from tron.keys import private_key_to_address, sign_message
 
 
 class TronClient(object):
-    def __init__(self, private_key=None, endpoint="grpc.trongrid.io:50051"):
+    def __init__(self, private_key=None, endpoint="grpc.trongrid.io:50051", solidity_endpoint="grpc.trongrid.io:50061"):
         channel = grpc.insecure_channel(endpoint)
         self.wallet_stub = WalletStub(channel)
+
+        channel = grpc.insecure_channel(solidity_endpoint)
         self.solidity_stub = WalletSolidityStub(channel)
 
         self.private_key = private_key
