@@ -1,7 +1,4 @@
-import grpc
-
-from tron.proto.api.api_pb2_grpc import WalletStub, WalletSolidityStub
-from tron.proto.api.api_pb2 import EmptyMessage, AccountAddressMessage, BytesMessage
+from tron.proto.api.api_pb2 import EmptyMessage # , AccountAddressMessage, BytesMessage
 from tron.proto.core.contract_pb2 import TransferContract
 from tron.client import TronClient
 from tron.types import HEX, ADDR
